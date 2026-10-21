@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Booklovers - Cửa Hàng</title>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+
+    font-family: 'Times New Roman', Times, serif; 
+    background-color: #fffaf2;
+    color: #444444;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: #333333;
+}
+.search-box {
+    display: flex;
+    width: 70%;        
+    max-width: 500px;  
+    margin: 0px 40;    
+}
+.search-box input {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-right: none; 
+    border-radius: 50px 0 0 50px;
+    outline: none;
+}
+.search-box button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c58888; 
+    border: none;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.search-box button:hover {
+    background-color: #c08080;
+}
+
+header {
+    background-color: #fffdf9;
+    height: 90px;
+    display: flex;
+    border-bottom: 1px solid #f1e1cd;
+}
+header div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    font-size: 1.8rem;
+    color: #c64756; 
+    font-weight: 700;
+}
+header h1 span {
+    color: #333333;
+}
+header ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+header ul a {
+    color: #555555;
+    transition: 0.2s;
+}
+header ul li.dang-chon a, header ul a:hover {
+    color: #c64756;
+    border-bottom: 2px solid #c64756;
+    padding-bottom: 5px;
+}
+main{
+    background-image: linear-gradient(rgba(255, 250, 242, 0.3), rgba(255, 250, 242, 0.3)), url('../img/anh\ 2\ sach.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #c64756;
+}
+.shop-banner {
+
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-text-stroke: 0.5px #ce7b7b;
+}
+.shop-banner h2 {
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #c64756;
+}
+
+.filter-bar {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.filter-bar a {
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555555;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: 0.2s;
+}
+.filter-bar a:hover,
+.filter-bar a.active {
+    color: #c64756;
+    border-bottom: 2px solid #c64756;
+}
+
+.product-grid {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    justify-content: center;
+}
+.product-card {
+    width: 260px;
+    text-align: center;
+    transition: 0.3s;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+}
+.product-card.an {
+    display: none;
+}
+.khong-co-sach {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    font-style: italic;
+    color: #999999;
+}
+.product-img {
+    width: 100%;
+    height: 320px;
+    background-color: #fff1e0;
+    border: 1px solid #f1e1cd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 18px;
+    position: relative;
+}
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.product-card .tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #c64756;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+}
+.product-card h4 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 1.15rem;
+    color: #333333;
+    margin-bottom: 8px;
+}
+.product-card .category {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999999;
+    margin-bottom: 10px;
+}
+.product-card .price {
+    font-size: 1.1rem;
+    color: #c64756;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.product-card .price span {
+    color: #aaaaaa;
+    text-decoration: line-through;
+    font-weight: normal;
+    font-size: 0.95rem;
+    margin-right: 8px;
+}
+.product-card button {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: #111111;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.product-card button:hover {
+    background-color: #c64756;
+}
+
+.pagination {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.pagination a {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f1e1cd;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: #555555;
+    transition: 0.2s;
+}
+.pagination a:hover,
+.pagination a.active {
+    background-color: #c64756;
+    border-color: #c64756;
+    color: #ffffff;
+}
+
+footer {
+    background-color: #fdeedd;
+    padding: 60px 0;
+    border-top: 1px solid #f1e1cd;
+}
+footer > div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+footer h3 {
+    font-family: Arial, sans-serif;
+    color: #222222;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+footer ul { 
+    list-style: none; 
+}
+footer ul li { 
+    margin-bottom: 12px; 
+    font-size: 1.05rem; 
+    color: #666666; 
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>BOOK<span>lovers</span></h1>
+            <form class="search-box">
+                <input type="text" placeholder="Tìm kiếm sách...">
+                <button type="submit">Tìm</button>
+            </form>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li class="dang-chon"><a href="cuahang.html">Cửa hàng</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+    <div class="shop-banner">
+        <h2>Cửa Hàng Sách</h2>
+    </div>
+    </main>
+    <div class="filter-bar">
+        <a href="#" class="active">Tất cả</a>
+        <a href="#">Văn học</a>
+        <a href="#">Kỹ năng sống</a>
+        <a href="#">Kinh tế</a>
+        <a href="#">Thiếu nhi</a>
+        <a href="#">Truyện tranh</a>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-img">
+                <span class="tag">Mới</span>
+                <img src="../img/nha gia kim.jpg" alt="Nhà Giả Kim">
+            </div>
+            <div class="category">Văn học</div>
+            <h4>Nhà Giả Kim</h4>
+            <div class="price">85.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/dac nhan tam.jpg" alt="Đắc Nhân Tâm">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Đắc Nhân Tâm</h4>
+            <div class="price"><span>120.000đ</span>95.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <span class="tag">Bán chạy</span>
+                <img src="../img/cha giau cha ngheo.jpg" alt="Cha Giàu Cha Nghèo">
+            </div>
+            <div class="category">Kinh tế</div>
+            <h4>Cha Giàu Cha Nghèo</h4>
+            <div class="price">110.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/doramon tap 1.jpg" alt="Doraemon Tập 1">
+            </div>
+            <div class="category">Truyện tranh</div>
+            <h4>Doraemon - Tập 1</h4>
+            <div class="price">20.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/totto-chan ben cua so.jpg" alt="Totto-chan">
+            </div>
+            <div class="category">Thiếu nhi</div>
+            <h4>Totto-chan Bên Cửa Sổ</h4>
+            <div class="price">78.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tuoi tre dang gia bao nhiu.jpg" alt="Tuổi Trẻ Đáng Giá Bao Nhiêu">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Tuổi Trẻ Đáng Giá Bao Nhiêu</h4>
+            <div class="price">89.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <span class="tag">Mới</span>
+                <img src="../img/khong gia dinh.jpg" alt="Không Gia Đình">
+            </div>
+            <div class="category">Văn học</div>
+            <h4>Không Gia Đình</h4>
+            <div class="price">98.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/lanh dao khong chuc danh.jpg" alt="Nhà Lãnh Đạo Không Chức Danh">
+            </div>
+            <div class="category">Kinh tế</div>
+            <h4>Nhà Lãnh Đạo Không Chức Danh</h4>
+            <div class="price"><span>135.000đ</span>105.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/shin cau be but chi.jpg" alt="Shin - Cậu Bé Bút Chì">
+            </div>
+            <div class="category">Truyện tranh</div>
+            <h4>Shin - Cậu Bé Bút Chì</h4>
+            <div class="price">22.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <span class="tag">Bán chạy</span>
+                <img src="../img/hoang tu be.jpg" alt="Hoàng Tử Bé">
+            </div>
+            <div class="category">Thiếu nhi</div>
+            <h4>Hoàng Tử Bé</h4>
+            <div class="price">65.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/nghi giau lam giau.jpg" alt="Nghĩ Giàu Làm Giàu">
+            </div>
+            <div class="category">Kinh tế</div>
+            <h4>Nghĩ Giàu Làm Giàu</h4>
+            <div class="price">99.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/toi thay hoa vang tren co xanh.jpg" alt="Tôi Thấy Hoa Vàng Trên Cỏ Xanh">
+            </div>
+            <div class="category">Văn học</div>
+            <h4>Tôi Thấy Hoa Vàng Trên Cỏ Xanh</h4>
+            <div class="price">92.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <span class="tag">Mới</span>
+                <img src="../img/so do.jpg" alt="Số Đỏ">
+            </div>
+            <div class="category">Văn học</div>
+            <h4>Số Đỏ</h4>
+            <div class="price">75.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/7 thoi quen hieu qua.png" alt="7 Thói Quen Hiệu Quả">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>7 Thói Quen Hiệu Quả</h4>
+            <div class="price"><span>150.000đ</span>119.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tham tu lung danh conan tap 1.jpg" alt="Conan Tập 1">
+            </div>
+            <div class="category">Truyện tranh</div>
+            <h4>Thám Tử Lừng Danh Conan - Tập 1</h4>
+            <div class="price">18.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <span class="tag">Bán chạy</span>
+                <img src="../img/vua nham mat vua mo cua so.jpg" alt="Vừa Nhắm Mắt Vừa Mở Cửa Sổ">
+            </div>
+            <div class="category">Thiếu nhi</div>
+            <h4>Vừa Nhắm Mắt Vừa Mở Cửa Sổ</h4>
+            <div class="price">58.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/nguoi giau co nhat thanh babylon.jpg" alt="Người Giàu Có Nhất Thành Babylon">
+            </div>
+            <div class="category">Kinh tế</div>
+            <h4>Người Giàu Có Nhất Thành Babylon</h4>
+            <div class="price">82.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/bo gia.jpg" alt="Bố Già">
+            </div>
+            <div class="category">Văn học</div>
+            <h4>Bố Già</h4>
+            <div class="price">108.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <span class="tag">Mới</span>
+                <img src="../img/muon kiep nhan sinh.jpg" alt="Muôn Kiếp Nhân Sinh">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Muôn Kiếp Nhân Sinh</h4>
+            <div class="price">129.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/doramon tap 2.jpg" alt="Doraemon Tập 2">
+            </div>
+            <div class="category">Truyện tranh</div>
+            <h4>Doraemon - Tập 2</h4>
+            <div class="price">20.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/Charlie va nha may so co la.jpg" alt="Charlie và Nhà Máy Sô-cô-la">
+            </div>
+            <div class="category">Thiếu nhi</div>
+            <h4>Charlie và Nhà Máy Sô-cô-la</h4>
+            <div class="price">68.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <span class="tag">Bán chạy</span>
+                <img src="../img/tu tot den vi dai.jpg" alt="Từ Tốt Đến Vĩ Đại">
+            </div>
+            <div class="category">Kinh tế</div>
+            <h4>Từ Tốt Đến Vĩ Đại</h4>
+            <div class="price"><span>145.000đ</span>115.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/mat biec.jpg" alt="Mắt Biếc">
+            </div>
+            <div class="category">Văn học</div>
+            <h4>Mắt Biếc</h4>
+            <div class="price">88.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/cafe cung tony.jpg" alt="Cà Phê Cùng Tony">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Cà Phê Cùng Tony</h4>
+            <div class="price">187.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/di tim le song.jpg" alt="Đi tìm lẻ sống">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Đi tìm lẻ sống</h4>
+            <div class="price">120.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tabalo tren dat a.jpg" alt="ta ba lo trên đất á">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Tabalo trên đất á</h4>
+            <div class="price">96.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/duoc hoc.jpg" alt="được học">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>được học</h4>
+            <div class="price">79.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/nguon goc cac loai.jpg" alt="Nguồn gốc các loài">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Nguồn gốc các loài </h4>
+            <div class="price">56.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/vu tru.jpg" alt="vũ trụ">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4> vũ trụ </h4>
+            <div class="price">176.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/nhung nha khoa hoc thay doi lich su.jpg" alt="Những nhà khoa hoc thay đổi lịch sử">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Những nhà khoa hoc thay đổi lịch sử</h4>
+            <div class="price">200.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/khoa hoc cam thu.jpg" alt="Khoa học cảm thứ">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Khoa học cảm thứ</h4>
+            <div class="price">134.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/khoa hco cham soc suc khoe.jpg" alt="khoa học chăm sóc sức khỏe">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>khoa hco chăm sóc sức khỏe</h4>
+            <div class="price">80.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/dieu gi do an sau.jpg" alt="Điều gì đó ẩn sâu">
+            </div>
+            <div class="category">Kỹ năng sống</div>
+            <h4>Điều gì đó sau ăn</h4>
+            <div class="price">240.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/one piece.jpg" alt="One Pice">
+            </div>
+            <div class="category">Truyện tranh</div>
+            <h4>One Pice</h4>
+            <div class="price">140.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/hang xom cua toi totoro.jpg" alt="Hàng xóm của tôi totoro">
+            </div>
+            <div class="category">Truyện tranh</div>
+            <h4>Hàng xóm của tôi totoro</h4>
+            <div class="price">290.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/toi ac va hinh phat.jpg" alt="Tội ác và hình phạt ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4>Tội ác và hình phạt</h4>
+            <div class="price">287.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tu duy nhanh va cham.jpg" alt="Tư duy nhanh và chậm">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4>Tư duy nhanh và chậm</h4>
+            <div class="price">297.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/toi ac va hinh phat.jpg" alt="Sức mạnh của thói ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4>Sức mạnh của thói</h4>
+            <div class="price">187.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/sang chan tam ly.jpg" alt="Sang chấn tâm lý">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4>Sang chấn tâm lý</h4>
+            <div class="price">88.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tam ly hoc.jpg" alt="tâm lý học ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4>Tâm lý học</h4>
+            <div class="price">77.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/ap dat va dinh kien.jpg" alt="áp đặt và định kiến ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4>Ap đặt và định kiến</h4>
+            <div class="price">74.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/thao tung cam xuc bang ngon tu.png" alt="Thao túng cảm xúc bằng ngôn từ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4>Thao túng cảm xuc bằng ngôn từ</h4>
+            <div class="price">87.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tam ly hoc hanh vi.jpg" alt="Tâm lý học hành vi ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4> Tâm lý học hành vi</h4>
+            <div class="price">199.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/thao tung vi tien.jpg" alt="Thao túng vì tiền ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4> Thao túng vì tiền</h4>
+            <div class="price">99.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tro chuyen voi chinh minh.jpg" alt="Trò chuyện với chính mình ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4> Trò chuyeenjvoiws chính mình</h4>
+            <div class="price">89.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/lam chu viec tu hoc.jpg" alt=" Làm chủ việc tự học ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4> Làm chủ việc tự học </h4>
+            <div class="price">199.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/ho diep va kinh ngu.jpg" alt="Hồ điệp và kình ngư ">
+            </div>
+            <div class="category">Truyện Tranh </div>
+            <h4> Hồ điệp và kình ngư </h4>
+            <div class="price">299.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/bai san.jpg" alt=" Bãi săn ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Bãi săn </h4>
+            <div class="price">299.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/bai san.jpg" alt=" Đất rừng phương nam ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Đất rừng phương Nam </h4>
+            <div class="price">179.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/mat kiem soat.jpg" alt=" Mắt kiểm soát ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Mất kiểm soát </h4>
+            <div class="price">119.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/cuoc chien dau tien.jpg" alt=" Cuộc chiến đầu tiên">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Cuộc chiến đầu tiên </h4>
+            <div class="price">129.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tat den.jpg" alt=" Tắt đèn ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Tắt đèn </h4>
+            <div class="price">299.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/bai san.jpg" alt=" Truyện kiều ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Truyện kiều </h4>
+            <div class="price"> 199.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/chi pheo.jpg" alt=" Chí phèo ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Chí phèo </h4>
+            <div class="price">189.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/tuoi tho su doi.jpg" alt=" Tuổi thơ dữ dội ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Tuổi thơ dữ dội </h4>
+            <div class="price">159.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                        <div class="product-card">
+            <div class="product-img">
+                <img src="../img/de nem phieu luu ky.jpg" alt=" Dế mèn phiêu lưu kí ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Dé mèn phiêu lưu ki </h4>
+            <div class="price">189.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/con thien cua rung.jpg" alt=" Con thiêng của rừng ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Con thiêng của rừng </h4>
+            <div class="price">49.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/vo nhat.jpg" alt=" Vợ nhặt ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Vợ nhặt </h4>
+            <div class="price">299.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/co va cao.jpg" alt=" Cò và Cáo ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Cò và Cáo </h4>
+            <div class="price">129.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/bo nong co hieu.jpg" alt=" Bồ nông có hiếu ">
+            </div>
+            <div class="category"> Văn học </div>
+            <h4> Bồ nông có hiếu </h4>
+            <div class="price">169.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/ech xanh di hoc.jpg" alt=" Ếch xanh đi học ">
+            </div>
+            <div class="category"> Truyện tranh </div>
+            <h4> Ếch xanh đi học </h4>
+            <div class="price">98.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/duoingan tay dai.jpg" alt=" Đuôi ngắn đôi dài">
+            </div>
+            <div class="category"> Truyện Tranh </div>
+            <h4> Đôi ngắn đôi dài </h4>
+            <div class="price">159.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/ong gia va bien ca.jpg" alt=" Ông già và biển cả ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4> Ông già và biển cả</h4>
+            <div class="price">189.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+                <div class="product-card">
+            <div class="product-img">
+                <img src="../img/dai gia.jpg" alt=" Đại gia ">
+            </div>
+            <div class="category">Kỹ năng sống </div>
+            <h4> Đại gia </h4>
+            <div class="price">149.000đ</div>
+            <button>Thêm vào giỏ</button>
+        </div>
+
+    </div>
+    <footer>
+        <div>
+            <h3>Liên hệ</h3>
+            <ul>
+                <li><strong>Địa chỉ:</strong> 319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</li>
+                <li><strong>Điện thoại:</strong> (012) 800 456 789</li>
+                <li><strong>Mail:</strong> contact@booklovers.com</li>
+            </ul>
+        </div>
+    </footer>
+
+<script>
+(function () {
+    var links = document.querySelectorAll('.filter-bar a');
+    var grid = document.querySelector('.product-grid');
+    var cards = grid.querySelectorAll('.product-card');
+
+    // Thông báo khi thể loại chưa có sách
+    var empty = document.createElement('div');
+    empty.className = 'khong-co-sach';
+    empty.textContent = 'Chưa có sách trong thể loại này.';
+    grid.appendChild(empty);
+
+    // Chuẩn hoá chữ: bỏ khoảng trắng thừa, không phân biệt hoa/thường
+    function chuanHoa(text) {
+        return text.replace(/\s+/g, ' ').trim().toLowerCase();
+    }
+
+    function loc(theLoai) {
+        var tatCa = (theLoai === 'tất cả');
+        var dem = 0;
+        cards.forEach(function (card) {
+            var cat = card.querySelector('.category');
+            var khop = tatCa || (cat && chuanHoa(cat.textContent) === theLoai);
+            card.classList.toggle('an', !khop);
+            if (khop) dem++;
+        });
+        empty.style.display = dem === 0 ? 'block' : 'none';
+    }
+
+    links.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            links.forEach(function (l) { l.classList.remove('active'); });
+            link.classList.add('active');
+            loc(chuanHoa(link.textContent));
+        });
+    });
+})();
+</script>
+</body>
+</html>

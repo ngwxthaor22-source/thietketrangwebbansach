@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Booklovers - Trang Chủ</title>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Times New Roman', Times, serif; 
+    background-color: #fffaf2;
+    color: #444444;
+}
+a {
+    text-decoration: none;
+    color: #333333;
+}
+.search-box {
+    display: flex;
+    width: 70%;        
+    max-width: 500px;  
+    margin: 0px 40;    
+}
+.search-box input {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-right: none; 
+    border-radius: 50px 0 0 50px;
+    outline: none;
+}
+.search-box button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c58888; 
+    border: none;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.search-box button:hover {
+    background-color: #c08080;
+}
+
+header {
+    background-color: #fffdf9;
+    height: 90px;
+    display: flex;
+    border-bottom: 1px solid #f1e1cd;
+}
+header  div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    font-size: 1.8rem;
+    color: #c64756; 
+    font-weight: 700;
+}
+header h1 span {
+    color: #333333;
+}
+header ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+header ul a {
+    color: #555555;
+    transition: 0.2s;
+}
+header ul li.dang-chon a, header ul a:hover {
+    color: #c64756;
+    border-bottom: 2px solid #c64756;
+    padding-bottom: 5px;
+}
+
+main {
+    background-image: url('img/anh\ 2\ sach.jpg') ;
+    background-repeat: no-repeat;
+    background-position: center;   
+    background-size: cover;
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-text-stroke: 0.5px #ce7b7b;
+    color: #c42c3e;
+}
+main div {
+    max-width: 700px;
+    padding: 0 20px;
+}
+main p {
+    font-size: 3rem;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+main h1 {
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+main a {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background-color: #111111;
+    color: #ffffff;
+    padding: 15px 35px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+main a:hover {
+    background-color: #c64756;
+}
+footer {
+    background-color: #fdeedd;
+    padding: 60px 0;
+    border-top: 1px solid #f1e1cd;
+}
+footer > div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+footer h3 {
+    font-family: Arial, sans-serif;
+    color: #222222;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+footer ul { 
+    list-style: none; 
+}
+footer ul li { 
+    margin-bottom: 12px; 
+    font-size: 1.05rem; 
+    color: #666666; 
+}
+
+</style>
+</head>
+<body>
+    <header> 
+        <div>
+            <h1>BOOK<span>lovers</span></h1>
+            <form class="search-box">
+                <input type="text" placeholder="Tìm kiếm sách...">
+                <button type="submit">Tìm</button>
+            </form>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="webcon/gioithieu.html">Giới thiệu</a></li>
+                <li><a href="webcon/cuahang.html">Cửa hàng</a></li>
+                <li><a href="webcon/tintuc.html">Tin tức</a></li>
+                <li><a href="webcon/lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <main> 
+        <div>
+            <p>Choose Your Book!</p>
+            <h1>Find Books for <br>All Ages!</h1>
+            <a href="https://www.fahasa.com/?srsltid=AfmBOori4OELqjAHFFk4wR8YpQk1jVrlysMmgiUu3Uh5VpUlhKfZJWdI">Discover Your Next Book</a>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <h3>Liên hệ</h3>
+            <ul>
+                <li><strong>Địa chỉ:</strong> 319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</li>
+                <li><strong>Điện thoại:</strong> (012) 800 456 789</li>
+                <li><strong>Mail:</strong> contact@booklovers.com</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

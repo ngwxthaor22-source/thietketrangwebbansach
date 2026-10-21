@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Booklovers - Tin Tức</title>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Times New Roman', Times, serif; 
+    background-color: #fffaf2;
+    color: #444444;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: #333333;
+}
+.search-box {
+    display: flex;
+    width: 70%;        
+    max-width: 500px;  
+    margin: 0px 40;    
+}
+.search-box input {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-right: none; 
+    border-radius: 50px 0 0 50px;
+    outline: none;
+}
+.search-box button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c58888; 
+    border: none;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.search-box button:hover {
+    background-color: #c08080;
+}
+
+header {
+    background-color: #fffdf9;
+    height: 90px;
+    display: flex;
+    border-bottom: 1px solid #f1e1cd;
+}
+header div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    font-size: 1.8rem;
+    color: #c64756; 
+    font-weight: 700;
+}
+header h1 span {
+    color: #333333;
+}
+header ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+header ul a {
+    color: #555555;
+    transition: 0.2s;
+}
+header ul li.dang-chon a, header ul a:hover {
+    color: #c64756;
+    border-bottom: 2px solid #c64756;
+    padding-bottom: 5px;
+}
+
+main{
+    background-image: linear-gradient(rgba(255, 250, 242, 0.3), rgba(255, 250, 242, 0.3)), url('../img/anh\ 2\ sach.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #c64756;
+}
+.news-banner {
+
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-text-stroke: 0.5px #ce7b7b;
+}
+.news-banner h2 {
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #c64756;
+}
+
+.featured-post {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    border-bottom: 1px solid #f1e1cd;
+    padding-bottom: 60px;
+}
+.featured-post .post-img {
+    flex: 1;
+    height: 380px;
+    background-color: #fff1e0;
+    overflow: hidden;
+}
+.featured-post .post-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.featured-post .post-content {
+    flex: 1;
+}
+.featured-post .post-meta {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #c64756;
+    margin-bottom: 15px;
+}
+.featured-post .post-meta span {
+    color: #999999;
+    margin-left: 10px;
+}
+.featured-post h3 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 2rem;
+    color: #222222;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+.featured-post p {
+    font-size: 1.1rem;
+    color: #666666;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+.featured-post .read-more {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #111111;
+    border-bottom: 2px solid #c64756;
+    padding-bottom: 5px;
+    transition: 0.2s;
+}
+.featured-post .read-more:hover {
+    color: #c64756;
+}
+
+.news-grid {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+.news-card {
+    width: 350px;
+    transition: 0.3s;
+}
+.news-card:hover {
+    transform: translateY(-5px);
+}
+.news-card .post-img {
+    width: 100%;
+    height: 230px;
+    background-color: #fff1e0;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+}
+.news-card .post-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.news-card .post-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #c64756;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+}
+.news-card .post-meta {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999999;
+    margin-bottom: 12px;
+}
+.news-card h4 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 1.3rem;
+    color: #222222;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+.news-card p {
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 15px;
+}
+.news-card .read-more {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #111111;
+    border-bottom: 1px solid #c64756;
+    padding-bottom: 3px;
+    transition: 0.2s;
+}
+.news-card .read-more:hover {
+    color: #c64756;
+}
+
+.pagination {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto 80px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.pagination a {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f1e1cd;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: #555555;
+    transition: 0.2s;
+}
+.pagination a:hover,
+.pagination a.active {
+    background-color: #c64756;
+    border-color: #c64756;
+    color: #ffffff;
+}
+
+footer {
+    background-color: #fdeedd;
+    padding: 60px 0;
+    border-top: 1px solid #f1e1cd;
+}
+footer > div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+footer h3 {
+    font-family: Arial, sans-serif;
+    color: #222222;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+footer ul { 
+    list-style: none; 
+}
+footer ul li { 
+    margin-bottom: 12px; 
+    font-size: 1.05rem; 
+    color: #666666; 
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>BOOK<span>lovers</span></h1>
+            <form class="search-box">
+                <input type="text" placeholder="Tìm kiếm sách...">
+                <button type="submit">Tìm</button>
+            </form>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li><a href="cuahang.html">Cửa hàng</a></li>
+                <li class="dang-chon"><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+<main>
+    <div class="news-banner">
+        <h2>Tin Tức & Sự Kiện</h2>
+    </div>
+</main>
+    <div class="featured-post">
+        <div class="post-img">
+            <img src="../img/hoi sach mua thu.webp" alt="Hội sách mùa thu 2026">
+        </div>
+        <div class="post-content">
+            <div class="post-meta">Sự kiện <span>15/09/2026</span></div>
+            <h3>Hội Sách Mùa Thu 2026 Chính Thức Khai Mạc Tại BOOKlovers</h3>
+            <p>Sự kiện quy tụ hơn 200 đầu sách mới cùng nhiều ưu đãi hấp dẫn, mang đến không gian giao lưu văn hóa đọc cho hàng ngàn độc giả trên khắp cả nước trong suốt 2 tuần diễn ra hội sách.</p>
+            <a href="https://nhandan.vn/hoi-sach-mua-thu-doc-lap-2026-mo-trang-sach-tu-hao-viet-nam-post983049.html" class="read-more">Đọc thêm</a>
+        </div>
+    </div>
+
+    <div class="news-grid">
+        <div class="news-card">
+            <div class="post-img">
+                <span class="post-tag">Khuyến mãi</span>
+                <img src="../img/van hoc doi tran.jpg" alt="Giảm giá sách văn học">
+            </div>
+            <div class="post-meta">Khuyến mãi &bull; 10/09/2026</div>
+            <h4>Giảm Đến 30% Cho Toàn Bộ Sách Văn Học Trong Tháng 9</h4>
+            <p>Cơ hội sở hữu những tác phẩm văn học kinh điển với mức giá ưu đãi chưa từng có.</p>
+            <a href="https://dongtay.vn/kho-sach-giam-gia" class="read-more">Đọc thêm</a>
+        </div>
+
+        <div class="news-card">
+            <div class="post-img">
+                <img src="../img/ri viu sach hay.jpg" alt="Review sách hay">
+            </div>
+            <div class="post-meta">Review sách &bull; 05/09/2026</div>
+            <h4>5 Cuốn Sách Kỹ Năng Sống Đáng Đọc Nhất Năm 2026</h4>
+            <p>Tổng hợp những đầu sách kỹ năng sống được độc giả yêu thích và đánh giá cao nhất.</p>
+            <a href="https://www.fahasa.com/blog/category/review-sach/?srsltid=AU7gw4XFzhFavf30lQF_afXRcJq3fTluBjNFR1farzCaHP9TlBf84HJg" class="read-more">Đọc thêm</a>
+        </div>
+
+        <div class="news-card">
+            <div class="post-img">
+                <span class="post-tag">Tác giả</span>
+                <img src="../img/giao luu tac gia.jpg" alt="Giao lưu tác giả">
+            </div>
+            <div class="post-meta">Sự kiện &bull; 28/08/2026</div>
+            <h4>Buổi Giao Lưu Cùng Tác Giả Sách Bán Chạy Nhất Tháng</h4>
+            <p>BOOKlovers hân hạnh tổ chức buổi trò chuyện, ký tặng sách cùng độc giả yêu mến.</p>
+            <a href="https://quangngaitv.vn/giao-luu-tac-gia-tac-pham-lan-toa-van-hoa-doc-6518735.html" class="read-more">Đọc thêm</a>
+        </div>
+
+        <div class="news-card">
+            <div class="post-img">
+                <img src="../img/moi ra mat.jpg" alt="Sách mới ra mắt">
+            </div>
+            <div class="post-meta">Sách mới &bull; 20/08/2026</div>
+            <h4>Top 10 Đầu Sách Mới Ra Mắt Đáng Chú Ý Tháng Này</h4>
+            <p>Danh sách những cuốn sách vừa cập bến kệ sách, hứa hẹn tạo nên cơn sốt mới.</p>
+            <a href="https://nhanam.vn/sach-moi-xuat-ban" class="read-more">Đọc thêm</a>
+        </div>
+
+        <div class="news-card">
+            <div class="post-img">
+                <img src="../img/van hoa.jpg" alt="Văn hóa đọc">
+            </div>
+            <div class="post-meta">Chia sẻ &bull; 12/08/2026</div>
+            <h4>Làm Sao Để Xây Dựng Thói Quen Đọc Sách Mỗi Ngày?</h4>
+            <p>Những bí quyết đơn giản giúp bạn duy trì thói quen đọc sách bền vững, hiệu quả.</p>
+            <a href="https://vanhoadoc.vn/" class="read-more">Đọc thêm</a>
+        </div>
+
+        <div class="news-card">
+            <div class="post-img">
+                <span class="post-tag">Khuyến mãi</span>
+                <img src="../img/uu dai.jpg" alt="Ưu đãi thành viên">
+            </div>
+            <div class="post-meta">Khuyến mãi &bull; 03/08/2026</div>
+            <h4>Ra Mắt Chương Trình Thành Viên Thân Thiết BOOKlovers</h4>
+            <p>Tích điểm đổi quà, nhận ưu đãi độc quyền dành riêng cho khách hàng thân thiết.</p>
+            <a href="https://nhanam.vn/dang-ky-thanh-vien-nha-nam-mua-cang-nhieu-uu-dai-cang-lon" class="read-more">Đọc thêm</a>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <h3>Liên hệ</h3>
+            <ul>
+                <li><strong>Địa chỉ:</strong> 319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</li>
+                <li><strong>Điện thoại:</strong> (012) 800 456 789</li>
+                <li><strong>Mail:</strong> contact@booklovers.com</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
